@@ -41,9 +41,9 @@
 
 [Hooks 내장 API]
 
-1. useState
+1. useState <br/>
     useState는 함수형 컴포넌트에서 state를 가질 수 있게 하는 Hook이다.
-2. useEffect
+2. useEffect <br/>
     useEffect 는 리액트 컴포넌트가 렌더링 될 때마다 특정 작업을 수행하도록 설정 할 수 있는 Hook이다.
     클래스형 컴포넌트의 componentDidMount 와 componentDidUpdate 를 합친 형태로 보아도 무방하다. 
     
@@ -57,7 +57,7 @@
 
 <br/>
 
-3. useRef
+3. useRef <br/>
     useRef 를 사용하여 ref 를 설정하면, useRef 를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가르키게 된다.
     이벤트를 발생했을 때 e.target.value로 해당 값을 가져오는 방법을 useRef를 사용하여 값을 가져 올 수 있다.
     
@@ -81,7 +81,7 @@
 
 
 
-4. useReducer 
+4. useReducer <br/>
    useReducer 는 useState 보다 컴포넌트에서 더 다양한 상황에 따라 다양한 상태를 다른 값으로 업데이트해주고 싶을 때 사용하는 Hook이다.
    
         import React, { useEffect, useReducer } from "react";
@@ -115,24 +115,24 @@
         }
         export default Count;
   
-  useReducer 의 첫번째 파라미터는 리듀서 함수이름(eventReducer) , 그리고 두번째 파라미터는 해당 리듀서의 기본 값을 넣어준다.
+      useReducer 의 첫번째 파라미터는 리듀서 함수이름(eventReducer) , 그리고 두번째 파라미터는 해당 리듀서의 기본 값을 넣어준다.
   
   
   
-5. useMemo
+5. useMemo <br/>
    어떤 상태값을 변경해서 컴포넌트가 재렌더링 될 때 불필요한 작업들을 하는 경우가 발생하는데 이렇게 불필요한 렌더링을 방지한다.
    useMemo에 해당 state를 저장하여 리랜더링 되었을 때 저장된 값과 비교해 값이 동일하면 리렌더링이 되지 않게 해준다. 
 
 <br/>
 
-6. useCallback
+6. useCallback <br/>
    useMemo와 상당히 비슷한 함수이다. 주로 랜더링 성능을 최적화하는 상황에서 사용한다. 
    이 useCallback을 사용하면, 이벤트 핸들러 함수를 필요할 때만 생성 할 수 있다.
    (원래는 리렌더링 될 때마다 함수들이 새로 생성되는데 컴포넌트의 렌더링이 자주 발생하거나 렌더링 해야 할 컴포넌트의 개수가 많아질때 이 부분을 최적화 해주기 위해 사용한다.
    
 <br/>
 
-7. useContext
+7. useContext <br/>
    useContext는 React.createContext로 context를 생성해 준다. 
    
        export const TodoContext = React.createContext();
@@ -149,6 +149,6 @@
 
 <br/>
 
-[참고문헌]
-코드 : https://moonformeli.tistory.com/26?category=703900
+[참고문헌] <br/>
+코드 : https://moonformeli.tistory.com/26?category=703900 <br/>
 문서 : https://codingbroker.tistory.com/23
