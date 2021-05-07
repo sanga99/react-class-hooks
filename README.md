@@ -77,11 +77,74 @@
        export default App;
 
 
+<br/>
 
 
+
+4. useReducer 
+   useReducer 는 useState 보다 컴포넌트에서 더 다양한 상황에 따라 다양한 상태를 다른 값으로 업데이트해주고 싶을 때 사용하는 Hook이다.
+   
+        import React, { useEffect, useReducer } from "react";
+        function eventReducer(state, action) {  // state : 기존 state값, action : dispatch 인자값
+            // action.type 에 따라 다른 작업 수행
+            switch (action.type) {
+              case 'ADD':
+                return { count: state.count + 1 };
+              case 'MINUS':
+                return { count: state.count - 1 };
+              default:
+                // 아무것도 해당되지 않을 때 기존 상태 반환
+                return state;
+            }
+          }
+        export const Count = () => {
+          //useReducer를 사용
+          const [state, dispatch] = useReducer(eventReducer, { count: 0 });
+          const add = () => {dispatch({type : 'ADD'})}
+          const min = () => {dispatch({type : 'MINUS'})}
+          useEffect(() => {
+            console.log('마운트 될 때만 실행됩니다.');
+          });
+          return (
+            <div>
+              <p>Current COUNT : {state.count}</p>
+             <button onClick={add}>+</button>
+              <button onClick={min}>-</button>
+            </div>
+          )
+        }
+        export default Count;
+  
+  useReducer 의 첫번째 파라미터는 리듀서 함수이름(eventReducer) , 그리고 두번째 파라미터는 해당 리듀서의 기본 값을 넣어준다.
+  
+  
+  
+5. useMemo
+   어떤 상태값을 변경해서 컴포넌트가 재렌더링 될 때 불필요한 작업들을 하는 경우가 발생하는데 이렇게 불필요한 렌더링을 방지한다.
+   useMemo에 해당 state를 저장하여 리랜더링 되었을 때 저장된 값과 비교해 값이 동일하면 리렌더링이 되지 않게 해준다. 
 
 <br/>
 
+6. useCallback
+   useMemo와 상당히 비슷한 함수이다. 주로 랜더링 성능을 최적화하는 상황에서 사용한다. 
+   이 useCallback을 사용하면, 이벤트 핸들러 함수를 필요할 때만 생성 할 수 있다.
+   (원래는 리렌더링 될 때마다 함수들이 새로 생성되는데 컴포넌트의 렌더링이 자주 발생하거나 렌더링 해야 할 컴포넌트의 개수가 많아질때 이 부분을 최적화 해주기 위해 사용한다.
+   
+<br/>
+
+7. useContext
+   useContext는 React.createContext로 context를 생성해 준다. 
+   
+       export const TodoContext = React.createContext();
+       
+   그리고 상위 컴포넌트에서 Provider로 하위 컴포넌트에게 값을 넘겨 줄 수 있다. 
+  
+       <TodoContext.Provider value= {{state, changeInputData, addTodo}}>
+       </TodoContext.Provider>
+
+  
+ <br/>
+  
 ---
 
 <br/>
